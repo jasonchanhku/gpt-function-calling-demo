@@ -9,14 +9,14 @@ public = true
 #id = ""
 
 # Whether to enable telemetry (default: true). No personal data is collected.
-enable_telemetry = true
+enable_telemetry = false
 
 # List of environment variables to be provided by each user to use the app.
 user_env = []
 
 [UI]
 # Name of the app and chatbot.
-name = "WeatherBot"
+name = "W&NGPT"
 
 # Description of the app and chatbot. This is used for HTML tags.
 # description = ""
@@ -28,7 +28,7 @@ default_expand_messages = false
 hide_cot = false
 
 # Link to your github repo. This will add a github button in the UI's header.
-github = "https://github.com/c17hawke/gpt-function-calling-demo"
+# github = "https://github.com/c17hawke/gpt-function-calling-demo"
 
 [meta]
 generated_by = "0.4.0"

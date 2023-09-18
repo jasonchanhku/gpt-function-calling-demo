@@ -3,10 +3,11 @@ from dotenv import load_dotenv
 import chainlit as cl
 from src.llm import chat_completion_request, messages, functions
 from src.sys_config import conv_prompt
-from src.utils import get_current_weather
+from src.utils import get_current_weather, get_top_headlines
 import json
 import os
-
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
@@ -15,6 +16,13 @@ def execute_function_call(assistant_message):
     if assistant_message.get("function_call").get("name") == "get_current_weather":
         location = json.loads(assistant_message.get("function_call").get("arguments") )["location"]
         results = get_current_weather(location)
+    elif assistant_message.get("function_call").get("name") == "get_top_headlines":
+        args = json.loads(assistant_message["function_call"]["arguments"])
+        results = get_top_headlines(
+                query=args.get("query"),
+                country=args.get("country"),
+                category=args.get("category")        
+        )
     else:
         results = f"Error: function {assistant_message['function_call']['name']} does not exist"
 
