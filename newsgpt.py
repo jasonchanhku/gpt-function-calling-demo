@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # constants
-llm_model = "gpt-3.5-turbo-16k-0613"
+llm_model = "gpt-4-0613"
 llm_max_tokens = 15500
 llm_system_prompt = "You are a assistant that provides news and headlines to user requests. Always try to get the lastest breaking stories using the available function calls."
 encoding_model_messages = "gpt-3.5-turbo-16k-0613"
@@ -110,8 +110,7 @@ def complete(messages, function_call: str = "auto"):
         model=llm_model,
         messages=messages,
         functions=[signature_get_top_headlines],
-        function_call=function_call
-    )
+        function_call=function_call    )
     
     # remove system message and append response from the LLM
     messages.pop(-1)
