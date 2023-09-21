@@ -2,6 +2,12 @@
 
 Its a demo of GPTs function calling update with API calling for weather and news.
 
+```bash
+pip install -r requirements.txt
+
+chainlit run app.pu
+```
+
 # References
 
 - [1] https://openai.com/blog/function-calling-and-other-api-updates
